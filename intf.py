@@ -13,3 +13,4 @@ access_template = ['switchport mode access',
 print('interface {}'.format(intf))
 print('\n'.join(access_template).format(vlan))
 
+print('\nThe script\'s name is ' + argv[0])
