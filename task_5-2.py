@@ -10,15 +10,29 @@ ip_mask = ip_list[1]
 ip_addr_list = ip_addr.split('.')
 #
 # Выводим адрес в десятичном формате:
-print('Network:')
-print('{:15} {:15} {:15} {:15}'.format(
-    ip_addr_list[0],
-    ip_addr_list[1],
-    ip_addr_list[2],
-    ip_addr_list[3]))
-# Выводим адрес в десятичном формате:
-print('{:15.8f} {:15.8f} {:15.8f} {:15.8f}'.format(
-    bin(int(ip_addr_list[0])).lstrip('0b'),
-    bin(int(ip_addr_list[1])).lstrip('0b'),
-    bin(int(ip_addr_list[2])).lstrip('0b'),
-    bin(int(ip_addr_list[3])).lstrip('0b')))
+# print('Network:')
+# print('{:15} {:15} {:15} {:15}'.format(
+#     ip_addr_list[0],
+#     ip_addr_list[1],
+#     ip_addr_list[2],
+#     ip_addr_list[3]))
+# Выводим адрес в двоичном формате:
+# print('{:15b} {:15b} {:15b} {:15b}'.format(
+#     int(ip_addr_list[0]),
+#     int(ip_addr_list[1]),
+#     int(ip_addr_list[2]),
+#     int(ip_addr_list[3])))
+#
+# Вывод с использованием шаблона:
+# Данный способ оптимален ! ! !
+ip_template = '''
+Network:
+{0:<10} {1:<10} {2:<10} {3:<10}
+{0:010b} {1:010b} {2:010b} {3:010b}
+'''
+print(ip_template.format(
+    int(ip_addr_list[0]),
+    int(ip_addr_list[1]),
+    int(ip_addr_list[2]),
+    int(ip_addr_list[3]),
+))
