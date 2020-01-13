@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # -*- coding: utf-8 -*-
 '''
 Задание 5.3
@@ -55,3 +57,4 @@ trunk_template = [
     'switchport trunk encapsulation dot1q', 'switchport mode trunk',
     'switchport trunk allowed vlan {}'
 ]
+intf_mode = input('Введите режим работы интерфейса (access/trunk): ')
