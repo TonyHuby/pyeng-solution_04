@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 '''
 Задание 6.3
@@ -25,29 +26,31 @@ trunk будут другие номера интерфейсов, код дол
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 '''
-
+# Access ports commands:
 access_template = [
     'switchport mode access', 'switchport access vlan',
     'spanning-tree portfast', 'spanning-tree bpduguard enable'
 ]
-
+# Trunk ports commands:
 trunk_template = [
     'switchport trunk encapsulation dot1q', 'switchport mode trunk',
-    'switchport trunk allowed vlan'
+    'switchport trunk allowed vlan', 'load interval 30'
 ]
-
+# Access ports template:
 access = {
     '0/12': '10',
     '0/14': '11',
     '0/16': '17',
     '0/17': '150'
 }
+# Trunk ports template:
 trunk = {
         '0/1': ['add', '10', '20'],
         '0/2': ['only', '11', '30'],
         '0/4': ['del', '17']
     }
-
+#
+# Access ports config generator:
 for intf, vlan in access.items():
     print('interface FastEthernet' + intf)
     for command in access_template:
@@ -55,3 +58,18 @@ for intf, vlan in access.items():
             print(' {} {}'.format(command, vlan))
         else:
             print(' {}'.format(command))
+#
+# Trunk ports config generator:
+for intf, param in trunk.items():
+    print('interface FastEthernet' + intf)
+    for command in trunk_template:
+        if command.endswith('allowed vlan'):
+            if param[0] == 'del':
+                print(' {} remove 17'.format(command))
+            elif param[0] == 'add':
+                print(' {} add 10, 20'.format(command))
+            elif param[0] == 'only':
+                print(' {} 11, 30'.format(command))
+        else:
+            print(' {}'.format(command))
+#
