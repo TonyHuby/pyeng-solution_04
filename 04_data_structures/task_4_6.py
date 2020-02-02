@@ -1,10 +1,8 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 '''
-Задание 7.1
+Задание 4.6
 
-Аналогично заданию 4.6 обработать строки из файла ospf.txt
-и вывести информацию по каждой в таком виде:
+Обработать строку ospf_route и вывести информацию на стандартный поток вывода в виде:
 Protocol:              OSPF
 Prefix:                10.0.24.0/24
 AD/Metric:             110/41
@@ -15,8 +13,5 @@ Outbound Interface:    FastEthernet0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 '''
-#
-# Open file with routes:
-with open('ospf.txt', 'r') as route_file:
-    for route_line in route_file:
-        print(route_line.split())
+
+ospf_route = 'O        10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0'
