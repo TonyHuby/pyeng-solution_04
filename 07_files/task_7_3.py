@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 '''
 Задание 7.3
@@ -17,3 +18,19 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 '''
+cam_table = 'CAM_table.txt'
+# Открыть (создать) файл для записи результата обработки:
+cam_table_out = open('CAM_table_out.txt', 'a')
+# Открыть файл с данными:
+with open(cam_table, 'r') as data_file:
+    # Циклом считываем строки файла:
+    for line_file in data_file:
+        line_file = line_file.split()
+        del line_file[2]
+        line_out = f'{line_file[0]:15} {line_file[1]:15} {line_file[2]:15}'
+        cam_table_out.write(line_out)
+# Обязательно закрыть файл после работы с ним!:
+cam_table_out.close()
+
+
+
